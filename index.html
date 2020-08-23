@@ -25,9 +25,25 @@
                 <li id="inputList" v-for="item in items">{{ item.text }}</li>
             </ul>
         </div>
+        <br><br>
 
-        <br><br><br>
 
+        <div id="loader">
+            <div v-if="load" class="breeding-rhombus-spinner">
+                <div class="rhombus child-1"></div>
+                <div class="rhombus child-2"></div>
+                <div class="rhombus child-3"></div>
+                <div class="rhombus child-4"></div>
+                <div class="rhombus child-5"></div>
+                <div class="rhombus child-6"></div>
+                <div class="rhombus child-7"></div>
+                <div class="rhombus child-8"></div>
+                <div class="rhombus big"></div>
+            </div>
+        </div>
+
+
+        <br><br>
         <div>
             <ul>
                 <li id="outputList" v-for="data in result"> {{ data.text }}</li>
@@ -53,7 +69,8 @@
                 }],
                 index: 2,
                 result: [],
-                apiURL: 'https://spinbot.ngrok.io/spin'
+                apiURL: 'https://spinbot-app.herokuapp.com/spin',
+                load: false
             },
             methods: {
                 addItem: function() {
@@ -67,11 +84,14 @@
                 },
                 refresh: function() {
                     this.items = []
+                    this.result = []
                 },
                 pop: function() {
                     this.items.pop()
+                    this.result.pop()
                 },
                 spinText: async function() {
+                    this.load = true;
                     await fetch(this.apiURL, {
                             method: 'POST',
                             headers: {
@@ -82,8 +102,8 @@
                             })
                         })
                         .then((response) => response.json())
-                        // .then((response) => console.log(response.payload))
                         .then(response => (this.result = response.payload.data))
+                        .then(() => this.load = false)
                         .catch((error) => console.log(error))
                 }
             }
