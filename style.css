@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(222, 236, 183);
+    background-color: #191a27;
 }
 
 #app {
@@ -11,27 +11,35 @@ body {
 #spinButton {
     display: inline-block;
     padding: 0.5em 3em;
-    border: 0.16em solid #000000;
+    border: 0.1em solid #2b2d42;
     margin: 0 0.3em 0.3em 0;
     box-sizing: border-box;
     text-decoration: none;
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
-    color: #000000;
+    color: #2b2d42;
     text-align: center;
     transition: all 0.15s;
+    font-weight: bold;
+    background-color: #8d99ae;
 }
 
 #spinButton:hover {
-    box-shadow: 0 0.5em 0.5em -0.4em #000000;
+    color: #edf2f4;
+    border: 0.1em solid #edf2f4;
+    box-shadow: 0 0.5em 0.5em -0.4em #edf2f4;
     transform: translateY(-0.25em);
+    background-color: #2b2d42;
 }
 
 input {
-    background-color: bisque;
+    background-color: #edf2f4;
     margin: 0.5rem;
     padding: 1rem;
+    outline: none;
+    color: #2b2d42;
+    border-radius: 5px;
 }
 
 #spinButton {
@@ -40,20 +48,36 @@ input {
     padding: 1rem;
     font-size: x-large;
     background: hsl(34, 100%, 82%);
+    outline: none;
+    border-radius: 10px;
 }
 
 #addButton {
-    background-color: rgb(147, 255, 156);
+    background-color: #edf2f4;
     margin: 0.5rem;
     padding: 1rem;
+    outline: none;
+    border-radius: 5px;
 }
 
 ul {
     list-style-type: none;
 }
 
-li {
-    background-color: bisque;
+#inputList {
+    background-color: #edf2f4;
     margin: 1rem;
     padding: 1rem;
+    border-left: 5px solid #ef233c;
+    /* color: #2b2d42; */
+    border-radius: 5px;
+}
+
+#outputList {
+    background-color: #edf2f4;
+    margin: 1rem;
+    padding: 1rem;
+    border-left: 5px solid #0077ff;
+    /* color: #2b2d42; */
+    border-radius: 5px;
 }

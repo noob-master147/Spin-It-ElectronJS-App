@@ -16,16 +16,27 @@
             <button id="addButton" @click.prevent="addItem">+</button>
         </div>
 
+        <br><br><br>
+
         <div>
             <ul>
-                <li v-for="item in items">{{ item.text }}</li>
+                <li id="inputList" v-for="item in items">{{ item.text }}</li>
+            </ul>
+        </div>
+
+        <br><br><br>
+
+        <div>
+            <ul>
+                <li id="outputList" v-for="data in result"> {{ data.text }}</li>
             </ul>
         </div>
 
 
-        <template>
-            <textarea v-for="data in result" > {{ data.text }} </textarea>
-        </template>
+        <!-- <template>
+            <textarea wrap="off" cols="30" rows="5" v-for="data in result" > {{ data.text }} </textarea>
+            <br>
+        </template> -->
 
     </div>
 
@@ -38,7 +49,7 @@
                     index: 1,
                     text: 'We Are Awesome'
                 }],
-                index: 0,
+                index: 2,
                 result: [],
                 apiURL: 'https://spinbot.ngrok.io/spin'
             },
