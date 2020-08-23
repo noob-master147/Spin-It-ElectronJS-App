@@ -1,5 +1,5 @@
 {
-    "name": "electronapp",
+    "name": "spinbot",
     "version": "1.0.0",
     "description": "ElectronJS App for SpinBot",
     "main": "main.js",

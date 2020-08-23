@@ -1,5 +1,5 @@
 const electron = require('electron')
-
+const path = require('path')
 
 const { app, BrowserWindow } = require('electron')
 
@@ -10,10 +10,12 @@ function createWindow() {
         height: 600,
         webPreferences: {
             nodeIntegration: true
-        }
+        },
+        icon: path.join(__dirname, 'icons/icon.jpeg')
     })
 
-    // and load the index.html of the app.
+    win.removeMenu()
+        // and load the index.html of the app.
     win.loadFile('index.html')
 
     // Open the DevTools.

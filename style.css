@@ -28,19 +28,19 @@ body::-webkit-scrollbar {
     padding: 1rem;
     text-decoration: none;
     font-size: x-large;
-    background: var(--list);
-    color: var(--bg);
+    background: var(--bg);
+    color: var(--list);
     text-align: center;
     outline: none;
     border-radius: 10px;
 }
 
 #spinButton:hover {
-    color: var(--list);
+    color: var(--bg);
     /* border: 0.1em solid #edf2f4; */
     box-shadow: 0 0.5em 0.5em -0.4em var(--list);
     transform: translateY(-0.25em);
-    background-color: var(--bg);
+    background-color: var(--list);
 }
 
 input {
@@ -65,6 +65,7 @@ input {
 
 ul {
     list-style-type: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #inputList {
@@ -72,7 +73,6 @@ ul {
     margin: 1rem;
     padding: 1rem;
     border-left: var(--listmargin) solid var(--input-border);
-    /* color: #2b2d42; */
     border-radius: 5px;
 }
 
