@@ -14,6 +14,8 @@
         <div>
             <input v-model="item" />
             <button id="addButton" @click.prevent="addItem">+</button>
+            <button id="popButton" @click.prevent="pop">←</button>
+            <button id="refreshButton" @click.prevent="refresh">↺</button>
         </div>
 
         <br><br><br>
@@ -62,6 +64,12 @@
                         text: this.item
                     });
                     this.item = '';
+                },
+                refresh: function() {
+                    this.items = []
+                },
+                pop: function() {
+                    this.items.pop()
                 },
                 spinText: async function() {
                     await fetch(this.apiURL, {
