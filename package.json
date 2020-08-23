@@ -1,0 +1,14 @@
+{
+    "name": "electronapp",
+    "version": "1.0.0",
+    "description": "ElectronJS App for SpinBot",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron ."
+    },
+    "author": "Divyansh Khandelwal",
+    "license": "MIT",
+    "dependencies": {
+        "electron": "^9.2.1"
+    }
+}

@@ -1,0 +1,75 @@
+<html>
+
+<head>
+    <!-- <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        <button id="spinButton" @click.prevent="spinText">S P I N B O T</button>
+
+        <div>
+            <input v-model="item" />
+            <button id="addButton" @click.prevent="addItem">+</button>
+        </div>
+
+        <div>
+            <ul>
+                <li v-for="item in items">{{ item.text }}</li>
+            </ul>
+        </div>
+
+
+        <template>
+            <textarea v-for="data in result" > {{ data.text }} </textarea>
+        </template>
+
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                item: '',
+                items: [{
+                    index: 1,
+                    text: 'We Are Awesome'
+                }],
+                index: 0,
+                result: [],
+                apiURL: 'https://spinbot.ngrok.io/spin'
+            },
+            methods: {
+                addItem: function() {
+                    if (this.item === '')
+                        return;
+                    this.items.push({
+                        index: (this.index++),
+                        text: this.item
+                    });
+                    this.item = '';
+                },
+                spinText: async function() {
+                    await fetch(this.apiURL, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json;charset=utf-8'
+                            },
+                            body: JSON.stringify({
+                                data: this.items
+                            })
+                        })
+                        .then((response) => response.json())
+                        // .then((response) => console.log(response.payload))
+                        .then(response => (this.result = response.payload.data))
+                        .catch((error) => console.log(error))
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

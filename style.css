@@ -1,0 +1,59 @@
+body {
+    background-color: rgb(222, 236, 183);
+}
+
+#app {
+    text-align: center;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+#spinButton {
+    display: inline-block;
+    padding: 0.5em 3em;
+    border: 0.16em solid #000000;
+    margin: 0 0.3em 0.3em 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: #000000;
+    text-align: center;
+    transition: all 0.15s;
+}
+
+#spinButton:hover {
+    box-shadow: 0 0.5em 0.5em -0.4em #000000;
+    transform: translateY(-0.25em);
+}
+
+input {
+    background-color: bisque;
+    margin: 0.5rem;
+    padding: 1rem;
+}
+
+#spinButton {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 2rem;
+    padding: 1rem;
+    font-size: x-large;
+    background: hsl(34, 100%, 82%);
+}
+
+#addButton {
+    background-color: rgb(147, 255, 156);
+    margin: 0.5rem;
+    padding: 1rem;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    background-color: bisque;
+    margin: 1rem;
+    padding: 1rem;
+}
