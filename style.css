@@ -1,8 +1,9 @@
 :root {
-    --bg: #3c3c3c;
-    --list: #f5f5f5;
+    --bg: #000000;
+    --list: #EEE5E9;
     --input-border: #ff5a5f;
-    --output-border: #087e8b;
+    --output-border: #b3ff25;
+    --hover: #7C7C7C;
     /* length */
     --listmargin: 8px;
 }
@@ -35,10 +36,13 @@ body::-webkit-scrollbar {
     border-radius: 10px;
 }
 
-#spinButton:hover {
+#spinButton:hover,
+#refreshButton:hover,
+#popButton:hover,
+#addButton:hover {
     color: var(--bg);
     /* border: 0.1em solid #edf2f4; */
-    box-shadow: 0 0.5em 0.5em -0.4em var(--list);
+    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
     transform: translateY(-0.25em);
     background-color: var(--list);
 }
@@ -55,7 +59,8 @@ input {
 #refreshButton,
 #popButton,
 #addButton {
-    background-color: var(--list);
+    background-color: var(--bg);
+    color: var(--list);
     margin: 0.5rem;
     padding: 1rem;
     outline: none;
@@ -73,7 +78,8 @@ ul {
     margin: 1rem;
     padding: 1rem;
     border-left: var(--listmargin) solid var(--input-border);
-    border-radius: 5px;
+    border-radius: 3px;
+    color: var(--bg);
 }
 
 #outputList {
@@ -81,8 +87,8 @@ ul {
     margin: 1rem;
     padding: 1rem;
     border-left: var(--listmargin) solid var(--output-border);
-    /* color: #2b2d42; */
-    border-radius: 5px;
+    border-radius: 3px;
+    color: var(--bg);
 }
 
 #loader {

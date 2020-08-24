@@ -14,8 +14,8 @@ function createWindow() {
         icon: path.join(__dirname, 'icons/icon.jpeg')
     })
 
-    win.removeMenu()
-        // and load the index.html of the app.
+    // win.removeMenu()
+    // and load the index.html of the app.
     win.loadFile('index.html')
 
     // Open the DevTools.
