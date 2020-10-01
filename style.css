@@ -1,8 +1,8 @@
 :root {
     --bg: #000000;
     --list: #EEE5E9;
-    --input-border: #ff5a5f;
-    --output-border: #b3ff25;
+    --input-border: #ff282f;
+    --output-border: #b637ff;
     --hover: #7C7C7C;
     /* length */
     --listmargin: 8px;
@@ -56,16 +56,25 @@ input {
     border-radius: 5px;
 }
 
+#themeButton,
 #refreshButton,
 #popButton,
 #addButton {
-    background-color: var(--bg);
-    color: var(--list);
     margin: 0.5rem;
     padding: 1rem;
     outline: none;
-    border-radius: 5px;
+    border-radius: 8px;
     font-weight: bold;
+}
+
+.light {
+    background-color: var(--list);
+    color: var(--bg);
+}
+
+.dark {
+    background-color: var(--bg);
+    color: var(--list);
 }
 
 ul {

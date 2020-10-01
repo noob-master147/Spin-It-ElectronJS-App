@@ -13,9 +13,9 @@
 
         <div>
             <input v-model="item" placeholder="Paste Your Text" />
-            <button id="addButton" @click.prevent="addItem">+</button>
-            <button id="popButton" @click.prevent="pop">←</button>
-            <button id="refreshButton" @click.prevent="refresh">↺</button>
+            <button :class="[ dark ? 'dark' : 'light']" id="addButton" @click.prevent="addItem">+</button>
+            <button :class="[ dark ? 'dark' : 'light']" id="popButton" @click.prevent="pop">←</button>
+            <button :class="[ dark ? 'dark' : 'light']" id="refreshButton" @click.prevent="refresh">↺</button>
         </div>
 
         <br><br><br>
@@ -49,13 +49,6 @@
                 <li id="outputList" v-for="data in result"> {{ data.text }}</li>
             </ul>
         </div>
-
-
-        <!-- <template>
-            <textarea wrap="off" cols="30" rows="5" v-for="data in result" > {{ data.text }} </textarea>
-            <br>
-        </template> -->
-
     </div>
 
     <script>
@@ -70,7 +63,8 @@
                 index: 2,
                 result: [],
                 apiURL: 'https://spinbot-app.herokuapp.com/spin',
-                load: false
+                load: false,
+                dark: true
             },
             methods: {
                 addItem: function() {
@@ -105,6 +99,9 @@
                         .then(response => (this.result = response.payload.data))
                         .then(() => this.load = false)
                         .catch((error) => console.log(error))
+                },
+                toggle: function() {
+                    this.dark = !this.dark
                 }
             }
         });
