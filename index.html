@@ -12,7 +12,7 @@
         <button id="spinButton" @click.prevent="spinText">S P I N B O T</button>
 
         <div>
-            <input v-model="item" placeholder="Paste Your Text" />
+            <input v-model="item" placeholder="Paste Your Text" id="textInput" />
             <button :class="[ dark ? 'dark' : 'light']" id="addButton" @click.prevent="addItem">+</button>
             <button :class="[ dark ? 'dark' : 'light']" id="popButton" @click.prevent="pop">←</button>
             <button :class="[ dark ? 'dark' : 'light']" id="refreshButton" @click.prevent="refresh">↺</button>
@@ -52,6 +52,14 @@
     </div>
 
     <script>
+        var textInput = document.getElementById("textInput");
+        input.addEventListener("keyup", function(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                document.getElementById("addButton").click();
+            }
+        });
+
         var app = new Vue({
             el: '#app',
             data: {
