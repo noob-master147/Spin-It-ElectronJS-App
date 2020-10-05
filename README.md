@@ -12,7 +12,7 @@ Install on your git window and also test on your devices.
 
 ```python
 Use it to your dalily life activity in a very easy steps.
-Responsibe with any dimensions devices.
+Responsive with any dimensions devices.
 ```
 
 ## Contributing
