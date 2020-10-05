@@ -7,107 +7,112 @@
 </head>
 
 <body>
-	<div id="app">
+    <div id="app">
 
-		<button id="spinButton" @click.prevent="spinText">S P I N B O T</button>
+        <button id="spinButton" @click.prevent="spinText">S P I N B O T</button>
 
-		<div>
-			<input v-model="item" placeholder="Paste Your Text" />
-			<button id="addButton" @click.prevent="addItem">+</button>
-			<button id="popButton" @click.prevent="pop">←</button>
-			<button id="refreshButton" @click.prevent="refresh">↺</button>
-		</div>
+        <div>
+            <input v-model="item" placeholder="Paste Your Text" id="textInput" />
+            <button :class="[ dark ? 'dark' : 'light']" id="addButton" @click.prevent="addItem">+</button>
+            <button :class="[ dark ? 'dark' : 'light']" id="popButton" @click.prevent="pop">←</button>
+            <button :class="[ dark ? 'dark' : 'light']" id="refreshButton" @click.prevent="refresh">↺</button>
+        </div>
 
-		<br><br><br>
+        <br><br><br>
 
-		<div>
-			<ul>
-				<li id="inputList" v-for="item in items">{{ item.text }} </li>
-			</ul>
-		</div>
-		<br><br>
-
-
-		<div id="loader">
-			<div v-if="load" class="breeding-rhombus-spinner">
-				<div class="rhombus child-1"></div>
-				<div class="rhombus child-2"></div>
-				<div class="rhombus child-3"></div>
-				<div class="rhombus child-4"></div>
-				<div class="rhombus child-5"></div>
-				<div class="rhombus child-6"></div>
-				<div class="rhombus child-7"></div>
-				<div class="rhombus child-8"></div>
-				<div class="rhombus big"></div>
-			</div>
-		</div>
+        <div>
+            <ul>
+                <li id="inputList" v-for="item in items">{{ item.text }}</li>
+            </ul>
+        </div>
+        <br><br>
 
 
-		<br><br>
-		<div>
-			<ul>
-				<li id="outputList" v-for="data in result"> {{ data.text }} <button id="copyButton"
-						v-on:click="copyToClipboard(data.text)">Copy</button></li>
-			</ul>
-		</div>
+        <div id="loader">
+            <div v-if="load" class="breeding-rhombus-spinner">
+                <div class="rhombus child-1"></div>
+                <div class="rhombus child-2"></div>
+                <div class="rhombus child-3"></div>
+                <div class="rhombus child-4"></div>
+                <div class="rhombus child-5"></div>
+                <div class="rhombus child-6"></div>
+                <div class="rhombus child-7"></div>
+                <div class="rhombus child-8"></div>
+                <div class="rhombus big"></div>
+            </div>
+        </div>
 
 
-		<!-- <template>
-            <textarea wrap="off" cols="30" rows="5" v-for="data in result" > {{ data.text }} </textarea>
-            <br>
-        </template> -->
+        <br><br>
+        <div>
+            <ul>
+                <li id="outputList" v-for="data in result"> {{ data.text }}  <button id="copyButton"
+						v-on:click="copyToClipboard(data.text)"></li>
+            </ul>
+        </div>
+    </div>
 
-	</div>
+    <script>
+        var textInput = document.getElementById("textInput");
+        input.addEventListener("keyup", function(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                document.getElementById("addButton").click();
+            }
+        });
 
-	<script>
-		var app = new Vue({
-			el: '#app',
-			data: {
-				item: '',
-				items: [{
-					index: 1,
-					text: 'We Are Awesome'
-				}],
-				index: 2,
-				result: [],
-				apiURL: 'https://spinbot-app.herokuapp.com/spin',
-				load: false
-			},
-			methods: {
-				addItem: function () {
-					if (this.item === '')
-						return;
-					this.items.push({
-						index: (this.index++),
-						text: this.item
-					});
-					this.item = '';
-				},
-				refresh: function () {
-					this.items = []
-					this.result = []
-				},
-				pop: function () {
-					this.items.pop()
-					this.result.pop()
-				},
-				spinText: async function () {
-					this.load = true;
-					await fetch(this.apiURL, {
-						method: 'POST',
-						headers: {
-							'Content-Type': 'application/json;charset=utf-8'
-						},
-						body: JSON.stringify({
-							data: this.items
-						})
-					})
-						.then((response) => response.json())
-						.then(response => (this.result = response.payload.data))
-						.then(() => this.load = false)
-						.catch((error) => console.log(error))
-				},
-				copyToClipboard: function (copyText) {
+        var app = new Vue({
+            el: '#app',
+            data: {
+                item: '',
+                items: [{
+                    index: 1,
+                    text: 'We Are Awesome'
+                }],
+                index: 2,
+                result: [],
+                apiURL: 'https://spinbot-app.herokuapp.com/spin',
+                load: false,
+                dark: true
+            },
+            methods: {
+                addItem: function() {
+                    if (this.item === '')
+                        return;
+                    this.items.push({
+                        index: (this.index++),
+                        text: this.item
+                    });
+                    this.item = '';
+                },
+                refresh: function() {
+                    this.items = []
+                    this.result = []
+                },
+                pop: function() {
+                    this.items.pop()
+                    this.result.pop()
+                },
+                spinText: async function() {
+                    this.load = true;
+                    await fetch(this.apiURL, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json;charset=utf-8'
+                            },
+                            body: JSON.stringify({
+                                data: this.items
+                            })
+                        })
+                        .then((response) => response.json())
+                        .then(response => (this.result = response.payload.data))
+                        .then(() => this.load = false)
+                        .catch((error) => console.log(error))
+                },
+                toggle: function() {
+                    this.dark = !this.dark
+                }
+              copyToClipboard: function (copyText) {
 					/* Select the text field */
 					navigator.clipboard.writeText(copyText).then(function () {
 						console.error("Copied the text: " + copyText);
@@ -116,10 +121,9 @@
 					});
 					
 				}
-			}
-		});
-
-	</script>
+            }
+        });
+    </script>
 </body>
 
 </html>
